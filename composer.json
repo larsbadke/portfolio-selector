@@ -1,0 +1,28 @@
+{
+    "name": "larsbadke/portfolio-selector",
+    "type": "library",
+    "description": "Portfolio-Selector is a PHP library that helps you to optimize your stock portfolio.",
+    "keywords": ["stock", "portfolio", "optimize"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lars Badke"
+        }
+    ],
+    "require": {
+        "php": "^5.3.3|^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "PortfolioSelector\\": "src/Selector/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PortfolioSelector\\Test\\": "test/Selector/"
+        }
+    }
+}
