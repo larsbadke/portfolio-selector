@@ -143,6 +143,45 @@ foreach ($selector->results() as $result) {
 ####Performance-Risk Diagram (5051 Allocations)
 ![Example](example.png)
 
+####Get allocation with lowest risk
+```php
+<?php
+
+$portfolio = new Portfolio();
+
+$apple = new Stock('apple');
+
+$google = new Stock('google');
+
+$apple->setPerformances([0, 3, 0, 3]);
+
+$google->setPerformances([6, 0, 6, 0]);
+
+$portfolio->add($apple);
+
+$portfolio->add($google);
+
+$selector = new Selector($portfolio);
+
+$selector->setInterval(10);
+
+$selector->run();
+
+print_r($selector->lowestRisk());
+
+// returns
+[
+    {
+        expectation: "0.0195",
+        variance: "0.0015",
+        allocation: {
+            apple: "0.7",
+            google: "0.3"
+        }
+    }
+]
+
+```
 ### Attention 
 A high amount of stocks or a low allocation interval can increase the execution time enormously.
 If you want to optimize a portfolio with many stocks, just use a higher allocation interval.

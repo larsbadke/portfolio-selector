@@ -102,6 +102,22 @@ class Selector
         return $this->allocations;
     }
 
+    /**
+     * Get allocation with lowest risk
+     * 
+     * @return mixed
+     */
+    public function lowestRisk()
+    {
+        $min = $this->allocations[0];
+        
+        foreach ($this->allocations as $allocation){
+            
+            $min = ($allocation['variance'] < $min['variance']) ? $allocation : $min;
+        }
+        
+        return $min;
+    }
 
 
 }
